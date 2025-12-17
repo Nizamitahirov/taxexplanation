@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Income Tax Guidelines 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS VARIABLES & THEME CONFIG --- */
+        :root {
+            /* Light Mode (Default) */
+            --primary: #E30613;
+            --primary-dark: #b00000;
+            --bg-body: #f4f6f9;
+            --bg-card: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #555555;
+            --border-color: #e0e0e0;
+            --tab-inactive: #eef2f6;
+            --tab-text: #666666;
+            --highlight-bg: #ffe6e8;
+            --shadow: 0 4px 20px rgba(0,0,0,0.06);
+            --header-height: 80px;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Mode Overrides */
+            --bg-body: #121212;
+            --bg-card: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --border-color: #333333;
+            --tab-inactive: #2d2d2d;
+            --tab-text: #a0a0a0;
+            --highlight-bg: #3c1f21;
+            --shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: background-color 0.3s, color 0.3s; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7; /* Better readability for long text */
+            padding-top: calc(var(--header-height) + 20px);
+        }
+
+        /* --- HEADER --- */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background: var(--bg-card);
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            z-index: 1000;
+        }
+
+        .subject-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .subject-icon {
+            width: 5px;
+            height: 30px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        /* Toggles */
+        .control-btn {
+            cursor: pointer;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: var(--tab-inactive);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            font-size: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s;
+            font-weight: 700;
+        }
+
+        .control-btn:hover {
+            background-color: var(--border-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* --- TABS --- */
+        .tabs-wrapper {
+            background: var(--bg-body);
+            position: sticky;
+            top: var(--header-height);
+            z-index: 990;
+            padding: 10px 0;
+        }
+
+        .tabs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        
+        .tab-btn {
+            padding: 14px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--tab-text);
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(227, 6, 19, 0.3);
+        }
+
+        /* --- CONTENT --- */
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+
+        .content-section {
+            display: none;
+            background: var(--bg-card);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.5s ease;
+            margin-top: 10px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Typography & Layout */
+        h2 {
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            border-bottom: 3px solid var(--highlight-bg);
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: var(--text-main);
+            margin: 35px 0 20px;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 1.05rem;
+        }
+
+        ul {
+            margin-bottom: 25px;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        /* Highlight & Info Boxes */
+        .highlight-box {
+            background: var(--highlight-bg);
+            border-left: 5px solid var(--primary);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        .highlight-box strong {
+            color: var(--primary);
+        }
+
+        .formula-box {
+            background: var(--tab-inactive);
+            border: 1px dashed var(--border-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: var(--text-main);
+            font-weight: 600;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        /* Example Cards */
+        .example-card {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 0;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .example-header {
+            background: linear-gradient(135deg, var(--tab-inactive) 0%, var(--bg-card) 100%);
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .example-body {
+            padding: 25px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .subject-title { font-size: 1rem; }
+            .content-section { padding: 25px; }
+            h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <div class="top-bar">
+        <div class="subject-title">
+            <div class="subject-icon"></div>
+            <span class="lang-en">Personal Income Tax (PIT) on Employees’ Income from 2026</span>
+            <span class="lang-az" style="display:none">2026-cı ildən İşçilərin Gəlirlərindən Gəlir Vergisi</span>
+        </div>
+        <div class="controls">
+            <!-- Language Switcher -->
+            <button class="control-btn" id="langBtn" onclick="toggleLanguage()" title="Switch Language">
+                <span id="langText">EN</span>
+            </button>
+            <!-- Theme Switcher -->
+            <button class="control-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle Dark Mode">
+                <i class="fas fa-moon" id="themeIcon"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs-wrapper">
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="openTab('pit')">
+                <span class="lang-en">PIT Overview</span>
+                <span class="lang-az" style="display:none">Gəlir Vergisi</span>
+            </button>
+            <button class="tab-btn" onclick="openTab('exemptions')">
+                <span class="lang-en">Exemptions & Deductions</span>
+                <span class="lang-az" style="display:none">Güzəştlər və Azadolmalar</span>
+            </button>
+            <button class="tab-btn" onclick="openTab('social')">
+                <span class="lang-en">Social & Insurance</span>
+                <span class="lang-az" style="display:none">Sosial və Sığorta</span>
+            </button>
+            <button class="tab-btn" onclick="openTab('examples')">
+                <span class="lang-en">Calculation Examples</span>
+                <span class="lang-az" style="display:none">Hesablama Nümunələri</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- CONTENT AREA -->
+    <div class="content-container">
+
+        <!-- TAB 1: PIT OVERVIEW -->
+        <div id="pit" class="content-section active">
+            
+            <!-- ENGLISH CONTENT -->
+            <div class="lang-en">
+                <h2>Personal Income Tax (PIT) on Employees’ Income from 2026</h2>
+                <p>Starting from 1 January 2026, a new system of taxation of employees’ income comes into force in Azerbaijan. The seven-year income tax holiday for the non-oil, non-state sector is ending, and personal income tax will once again be withheld from employees’ salaries. The tax is calculated on a progressive scale:</p>
+                
+                <ul>
+                    <li>
+                        <strong>Income up to 2,500 AZN per month</strong> – subject to PIT at 3%, with a tax-exempt amount of 200 AZN deducted from income beforehand. In other words, for this category the tax is calculated as 3% of the amount exceeding 200 AZN.<br>
+                        <div class="highlight-box">
+                            For example, with a salary of 1,000 AZN the tax base is 800 AZN, and the tax is 24 AZN. If the salary is 2,500 AZN, the tax will be 3% of (2,500 − 200) = 69 AZN.
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Income from 2,500 AZN to 8,000 AZN</strong> – the 200 AZN allowance does not apply, and the tax is calculated using the formula:<br>
+                        <div class="formula-box">75 AZN + 10% of the amount exceeding 2,500 AZN.</div><br>
+                        Here, 75 AZN is a fixed tax amount on the first 2,500 AZN (formally 3% of 2,500 AZN).<br>
+                        For example, with a salary of 3,000 AZN, PIT will be: 75 AZN + 10% × (3,000 − 2,500) = 125 AZN.<br>
+                        For income of exactly 8,000 AZN, the tax will be: 75 + 10% × (8,000 − 2,500) = 625 AZN.
+                    </li>
+                    <li>
+                        <strong>Income above 8,000 AZN</strong> – the tax is calculated using the formula:<br>
+                        <div class="formula-box">625 AZN + 14% of the amount exceeding 8,000 AZN.</div><br>
+                        That is, the first 8,000 AZN is taxed according to the previous bracket (resulting in 625 AZN of tax), and the portion above 8,000 AZN is taxed at 14%.<br>
+                        For example, with a salary of 9,000 AZN, the tax is: 625 + 14% × (9,000 − 8,000) = 765 AZN.
+                    </li>
+                </ul>
+
+                <p>The new PIT rates in 2026 are transitional. Further increases in rates for low-income categories are expected in subsequent years (up to 5% in 2027 and 7% in 2028 for income up to 2,500 AZN). However, for 2026 the applicable rates remain 3%, 10%, and 14% as indicated above. These amendments will come into force after the final approval of changes to the Tax Code.</p>
+            </div>
+
+            <!-- AZERBAIJANI CONTENT -->
+            <div class="lang-az" style="display:none">
+                <h2>2026-cı İldən İşçilərin Gəlirlərindən Gəlir Vergisi (Fiziki Şəxslər)</h2>
+                <p>2026-cı il yanvarın 1-dən Azərbaycanda muzdlu işçilərin gəlirlərinin vergiyə cəlb edilməsinin yeni sistemi qüvvəyə minir. Qeyri-neft, qeyri-dövlət sektoru üçün nəzərdə tutulan yeddi illik gəlir vergisi tətili başa çatır və işçilərin əmək haqqından yenidən gəlir vergisi tutulacaqdır. Vergi proqressiv şkala üzrə hesablanır:</p>
+                
+                <ul>
+                    <li>
+                        <strong>Aylıq gəlir 2,500 AZN-dək olduqda</strong> – 3% dərəcəsi ilə gəlir vergisinə cəlb olunur və gəlirdən əvvəlcədən 200 AZN vergidən azad məbləğ çıxılır. Başqa sözlə, bu kateqoriya üçün vergi 200 AZN-dən yuxarı olan məbləğin 3%-i kimi hesablanır.<br>
+                        <div class="highlight-box">
+                            Məsələn, 1,000 AZN maaş olduqda vergi bazası 800 AZN təşkil edir və vergi 24 AZN olur. Əgər maaş 2,500 AZN olarsa, vergi (2,500 − 200)-ün 3%-i = 69 AZN təşkil edəcəkdir.
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Gəlir 2,500 AZN-dən 8,000 AZN-dək olduqda</strong> – 200 AZN güzəşt tətbiq edilmir və vergi aşağıdakı düsturla hesablanır:<br>
+                        <div class="formula-box">75 AZN + 2,500 AZN-dən yuxarı olan məbləğin 10%-i.</div><br>
+                        Burada 75 AZN ilk 2,500 AZN üçün sabit vergi məbləğidir (formal olaraq 2,500 AZN-in 3%-i).<br>
+                        Məsələn, 3,000 AZN maaş olduqda, Gəlir Vergisi belə olacaq: 75 AZN + 10% × (3,000 − 2,500) = 125 AZN.<br>
+                        Tam 8,000 AZN gəlir üçün vergi belə olacaq: 75 + 10% × (8,000 − 2,500) = 625 AZN.
+                    </li>
+                    <li>
+                        <strong>Gəlir 8,000 AZN-dən yuxarı olduqda</strong> – vergi aşağıdakı düsturla hesablanır:<br>
+                        <div class="formula-box">625 AZN + 8,000 AZN-dən yuxarı olan məbləğin 14%-i.</div><br>
+                        Yəni, ilk 8,000 AZN əvvəlki pilləyə uyğun olaraq vergiyə cəlb edilir (nəticədə 625 AZN vergi alınır), 8,000 AZN-dən yuxarı hissə isə 14% ilə vergiyə cəlb olunur.<br>
+                        Məsələn, 9,000 AZN maaş olduqda vergi: 625 + 14% × (9,000 − 8,000) = 765 AZN.
+                    </li>
+                </ul>
+
+                <p>2026-cı ildə tətbiq olunan yeni Gəlir Vergisi dərəcələri keçid xarakteri daşıyır. Növbəti illərdə aşağı gəlirli kateqoriyalar üçün dərəcələrin daha da artırılması gözlənilir (2,500 AZN-dək gəlir üçün 2027-ci ildə 5% və 2028-ci ildə 7%-ə qədər). Lakin 2026-cı il üçün tətbiq olunan dərəcələr yuxarıda göstərildiyi kimi 3%, 10% və 14% olaraq qalır. Bu dəyişikliklər Vergi Məcəlləsinə edilən dəyişikliklərin yekun təsdiqindən sonra qüvvəyə minəcəkdir.</p>
+            </div>
+        </div>
+
+        <!-- TAB 2: EXEMPTIONS -->
+        <div id="exemptions" class="content-section">
+            
+            <!-- ENGLISH CONTENT -->
+            <div class="lang-en">
+                <h2>PIT Exemptions and Deductions</h2>
+                <p>When calculating PIT in 2026, a number of tax deductions (tax-exempt amounts) for certain employee categories provided for by Article 102 of the Tax Code remain in force. Deductions reduce the taxable income before applying the tax rates:</p>
+                
+                <ul>
+                    <li><strong>Standard deduction of 200 AZN</strong> – applies to all employees whose monthly income does not exceed 2,500 AZN. This amount is not subject to tax (as noted above, the 3% tax is charged only on income exceeding 200 AZN). If income exceeds 2,500 AZN, this deduction is not granted at all.</li>
+                    <li>
+                        <strong>Additional personal deductions for preferential categories of citizens.</strong> Only one of the following deductions is granted (they are not cumulative), if the employee is entitled to it under the law:
+                        <ul>
+                            <li><strong>400 AZN per month</strong> – Heroes of Azerbaijan, Heroes of the Soviet Union and Heroes of Socialist Labour, persons awarded the “Shohrat” order of all degrees, disabled veterans of war of groups I and II, widows/widowers of deceased servicemen, war veterans, persons affected by the Chernobyl nuclear disaster and persons equated to them. Their taxable monthly income is reduced by 400 AZN.</li>
+                            <li><strong>200 AZN per month</strong> – a preferential deduction of this amount is granted to another legally established category (for example, it may apply to certain participants in military operations or persons equated to them according to the current amendments to the Tax Code).</li>
+                            <li><strong>100 AZN per month</strong> – persons with disabilities of groups I and II (except disabled war veterans who fall under the 400 AZN deduction), as well as minors with disabilities.</li>
+                            <li><strong>50 AZN per month</strong> – parents and spouses of deceased servicemen or civil servants who died in the line of duty (provided that the spouse has not remarried), as well as other categories provided by law (for example, families of “shehids” – persons who died defending the territorial integrity of the country), in accordance with applicable legislation (Article 102 of the Tax Code).</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Other Exemptions and Rules</h3>
+                
+                <div class="example-card">
+                    <div class="example-header">Life insurance</div>
+                    <div class="example-body">
+                        <p>Azerbaijan provides a tax benefit for contributions to accumulative life insurance and pension insurance paid by the employer on behalf of the employee. According to Article 102.1.8 of the Tax Code, if the insurance contract is concluded for at least 3 years with an Azerbaijani insurer (voluntary accumulative life insurance/pension insurance), the amount of insurance contributions is excluded from the employee’s taxable income. These contributions are also exempt from mandatory social security contributions, both those withheld from the employee and those accrued by the employer.</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-header">Temporary disability benefits (sick pay)</div>
+                    <div class="example-body">
+                        <p>Are subject to PIT in the general manner. Although such payments may not be subject to certain other payroll contributions, they are included in income for PIT purposes.</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-header">Non-taxable bonus</div>
+                    <div class="example-body">
+                        <p>A special wage type is provided under which the amount is fully exempt from taxation. Any amounts entered in the calculation under this wage type are not subject to PIT or other taxes/contributions. This code should be used only for those bonus payments which by their nature fall under legally established non-taxable income (for example, one-off material assistance within statutory limits, etc.).</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-header">Compensation for unused vacation</div>
+                    <div class="example-body">
+                        <p>When paying compensation for unused vacation days, a special PIT calculation rule applies. It is necessary to calculate the tax separately for the portions of compensation attributable to different years. The progressive tax scale is applied to the compensation for each year separately and independently of other employee income in the current month.</p>
+                        <p>For example, if in 2026 an employee receives compensation for unused vacation for 2025 and for days of the current year 2026, the amount relating to 2025 is taxed under the rules effective in 2026, but the tax base and the applicable rate are determined based only on the compensation amount for 2025, without taking into account salary and other earnings. Similarly, PIT on the portion of compensation relating to 2026 is calculated separately, based solely on the amount of that portion and without considering other income.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AZERBAIJANI CONTENT -->
+            <div class="lang-az" style="display:none">
+                <h2>Güzəştlər və Vergidən Azadolmalar</h2>
+                <p>2026-cı ildə Gəlir Vergisi hesablanarkən, Vergi Məcəlləsinin 102-ci maddəsi ilə müəyyən edilmiş işçilərin müəyyən kateqoriyaları üçün bir sıra vergi güzəştləri (vergidən azad məbləğlər) qüvvədə qalır. Güzəştlər vergi dərəcələri tətbiq olunmazdan əvvəl vergi tutulan gəliri azaldır:</p>
+                
+                <ul>
+                    <li><strong>200 AZN məbləğində standart güzəşt</strong> – aylıq gəliri 2,500 AZN-dən çox olmayan bütün işçilərə şamil edilir. Bu məbləğ vergiyə cəlb edilmir (yuxarıda qeyd edildiyi kimi, 3% vergi yalnız 200 AZN-dən yuxarı olan gəlirə hesablanır). Əgər gəlir 2,500 AZN-dən çox olarsa, bu güzəşt ümumiyyətlə verilmir.</li>
+                    <li>
+                        <strong>İmtiyazlı vətəndaş kateqoriyaları üçün əlavə şəxsi güzəştlər.</strong> Aşağıdakı güzəştlərdən yalnız biri verilir (onlar cəmlənmir), əgər işçi qanunvericiliyə əsasən buna hüququ çatırsa:
+                        <ul>
+                            <li><strong>Ayda 400 AZN</strong> – Azərbaycanın Milli Qəhrəmanları, Sovet İttifaqı və Sosialist Əməyi Qəhrəmanları, "Şöhrət" ordeninin hər üç dərəcəsi ilə təltif edilmiş şəxslər, I və II qrup müharibə əlilləri, həlak olmuş hərbi qulluqçuların dul arvadları (ərləri), müharibə veteranları, Çernobıl AES qəzasından zərər çəkmiş şəxslər və onlara bərabər tutulanlar. Onların vergi tutulan aylıq gəliri 400 AZN azaldılır.</li>
+                            <li><strong>Ayda 200 AZN</strong> – bu məbləğdə güzəşt qanunvericiliklə müəyyən edilmiş digər kateqoriyaya şamil edilir (məsələn, Vergi Məcəlləsinə edilən cari dəyişikliklərə əsasən hərbi əməliyyatların müəyyən iştirakçılarına və ya onlara bərabər tutulan şəxslərə şamil edilə bilər).</li>
+                            <li><strong>Ayda 100 AZN</strong> – I və II qrup əlilliyi olan şəxslər (400 AZN güzəştinə düşən müharibə əlilləri istisna olmaqla), həmçinin sağlamlıq imkanları məhdud uşaqlar.</li>
+                            <li><strong>Ayda 50 AZN</strong> – həlak olmuş hərbi qulluqçuların və ya vəzifə borcunu yerinə yetirərkən həlak olmuş dövlət qulluqçularının valideynləri və dul arvadları (ərləri) (dul arvad (ər) təkrar nikaha girmədiyi halda), həmçinin qanunla nəzərdə tutulmuş digər kateqoriyalar (məsələn, ölkənin ərazi bütövlüyünü qoruyarkən həlak olmuş şəxslərin – "şəhidlərin" ailələri), qüvvədə olan qanunvericiliyə uyğun olaraq (Vergi Məcəlləsinin 102-ci maddəsi).</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Digər Azadolmalar və Qaydalar</h3>
+                
+                <div class="example-card">
+                    <div class="example-header">Həyat sığortası</div>
+                    <div class="example-body">
+                        <p>Azərbaycanda işəgötürən tərəfindən işçinin xeyrinə ödənilən yığım həyat sığortası və pensiya sığortası haqları üçün vergi güzəşti nəzərdə tutulur. Vergi Məcəlləsinin 102.1.8-ci maddəsinə əsasən, sığorta müqaviləsi Azərbaycan sığortaçısı ilə ən azı 3 il müddətinə bağlanıbsa (könüllü yığım həyat sığortası/pensiya sığortası), sığorta haqlarının məbləği işçinin vergi tutulan gəlirindən çıxılır. Bu haqlar həmçinin məcburi dövlət sosial sığorta haqlarından da azaddır (həm işçidən tutulan, həm də işəgötürən tərəfindən hesablanan hissədən).</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-header">Müvəqqəti əmək qabiliyyətinin itirilməsinə görə müavinət (Xəstəlik vərəqəsi)</div>
+                    <div class="example-body">
+                        <p>Ümumi qaydada gəlir vergisinə cəlb edilir. Baxmayaraq ki, bu cür ödənişlər bəzi digər əmək haqqı ayırmalarından azad ola bilər, gəlir vergisi məqsədləri üçün gəlirə daxil edilir.</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-header">Vergidən azad bonus (mükafat)</div>
+                    <div class="example-body">
+                        <p>Məbləğin tamamilə vergidən azad olduğu xüsusi əmək haqqı növü nəzərdə tutulur. Bu əmək haqqı növü altında hesablamaya daxil edilən hər hansı məbləğ gəlir vergisinə və ya digər vergi/ayırmalara cəlb edilmir. Bu kod yalnız təbiətinə görə qanunvericiliklə müəyyən edilmiş vergidən azad gəlirə aid olan bonus ödənişləri üçün istifadə edilməlidir (məsələn, qanuni limitlər daxilində birdəfəlik maddi yardım və s.).</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-header">İstifadə olunmamış məzuniyyətə görə kompensasiya</div>
+                    <div class="example-body">
+                        <p>İstifadə olunmamış məzuniyyət günlərinə görə kompensasiya ödənilərkən xüsusi gəlir vergisi hesablama qaydası tətbiq edilir. Kompensasiyanın müxtəlif illərə aid olan hissələri üçün vergini ayrıca hesablamaq lazımdır. Proqressiv vergi şkalası hər ilin kompensasiyasına cari aydakı digər işçi gəlirlərindən asılı olmayaraq ayrıca tətbiq edilir.</p>
+                        <p>Məsələn, əgər 2026-cı ildə işçi 2025-ci il üçün və 2026-cı ilin cari günləri üçün istifadə olunmamış məzuniyyətə görə kompensasiya alırsa, 2025-ci ilə aid olan məbləğ 2026-cı ildə qüvvədə olan qaydalarla vergiyə cəlb edilir, lakin vergi bazası və tətbiq olunan dərəcə yalnız 2025-ci ilin kompensasiya məbləğinə əsasən, maaş və digər qazanclar nəzərə alınmadan müəyyən edilir. Eynilə, kompensasiyanın 2026-cı ilə aid olan hissəsi üzrə gəlir vergisi, digər gəlirlər nəzərə alınmadan, yalnız həmin hissənin məbləğinə əsasən ayrıca hesablanır.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: SOCIAL & INSURANCE -->
+        <div id="social" class="content-section">
+            
+            <!-- ENGLISH CONTENT -->
+            <div class="lang-en">
+                <h2>Mandatory Social and Insurance Contributions</h2>
+                <p>In addition to PIT, mandatory insurance contributions are withheld from and accrued on the payroll. In 2026, changes to the rates and calculation procedure for social contributions will come into force; however, the general approach remains the same: contributions are split into a part paid by the employee (withheld from salary) and a part paid by the employer (charged on top of salary). The key types of contributions and their rates are as follows:</p>
+
+                <h3>State Pension / Social Insurance Contributions</h3>
+                <p>Mandatory social insurance contributions total 25% of the payroll and are transferred to the State Social Protection Fund. The distribution of this burden between employee and employer is progressive, taking into account the threshold of 200 AZN and, from 2026, the threshold of 8,000 AZN:</p>
+                <ul>
+                    <li><strong>On the portion of salary up to 200 AZN</strong> – the employee’s contribution is 3%, and the employer’s contribution is 22% of this portion. Thus, 25% is contributed from the first 200 AZN (which amounts to 50 AZN in total, of which 6 AZN is paid by the employee and 44 AZN by the employer). If the salary does not exceed 200 AZN, only this lower rate applies.</li>
+                    <li><strong>On the portion of salary from 200 AZN to 8,000 AZN</strong> – the employee’s contribution is 10%, and the employer’s contribution is 15% of the amount within this range. In total this also yields 25%. For example, if the salary is 1,000 AZN, the first 200 AZN is subject to 3%/22%, and the remaining 800 AZN to 10%/15%. Employee withholding will be: 6 AZN (on the first 200) + 80 AZN (10% on 800) = 86 AZN; the employer’s accrual: 44 AZN + 120 AZN = 164 AZN. These rates apply to the overwhelming majority of salaries in the private sector.</li>
+                    <li><strong>On the portion of salary above 8,000 AZN</strong> – a reduced rate applies: the employee’s contribution remains 10%, while the employer’s contribution is reduced to 11% of the amount exceeding 8,000 AZN. In total, 21% (instead of 25%) is contributed from this upper portion of income. This innovation has been introduced from 2026 to ease the burden on high salaries. For example, on the amount exceeding 8,000 AZN in a salary, total social insurance contributions will be 21% instead of 25%, reducing the overall social tax rate for very high incomes.</li>
+                </ul>
+
+                <h3>Unemployment Insurance Contributions</h3>
+                <p>The Unemployment Insurance Fund is formed through contributions of 1% of payroll, split equally between employee and employer. That is, 0.5% is withheld from the employee’s salary and 0.5% is paid by the employer. This rate remains unchanged in 2026.</p>
+                <div class="highlight-box">Example: with a salary of 1,000 AZN, the contribution to the unemployment fund will be 5 AZN paid by the employee and 5 AZN paid by the employer.</div>
+
+                <h3>Mandatory Health Insurance Contributions</h3>
+                <p>In 2026, new thresholds for mandatory health insurance (MHI) are set for the private sector:</p>
+                <ul>
+                    <li><strong>On the portion of salary up to 2,500 AZN</strong> – the employee contributes 2%, and the employer also 2%. Thus, for income up to 2,500 AZN, the total contribution to the MHI Fund is 4% (equally split between employee and employer).</li>
+                    <li><strong>On the portion of salary above 2,500 AZN</strong> – the employee contributes 0.5%, and the employer 0.5% on the amount exceeding this threshold. In total, contributions from the excess portion amount to only 1%, which significantly reduces the burden on higher salaries. (Previously, before 2026, the threshold for the reduced MHI rate was 8,000 AZN; it has now been lowered to 2,500 AZN to align with the new PIT scale.)</li>
+                </ul>
+                <div class="highlight-box">
+                    Example of MHI calculation: for a salary of 3,000 AZN, the contribution is calculated as follows:<br>
+                    • on the first 2,500 AZN – 2% (50 AZN) by the employee and 2% (50 AZN) by the employer;<br>
+                    • on the remaining 500 AZN – 0.5% (2.5 AZN) by the employee and 0.5% (2.5 AZN) by the employer.<br>
+                    Total MHI contributions:<br>
+                    • employee: 52.5 AZN,<br>
+                    • employer: 52.5 AZN.<br>
+                    For lower incomes (≤ 2,500 AZN), the entire amount is subject to 2%; for significantly higher incomes, the main portion is taxed at the reduced rate of 0.5%.
+                </div>
+            </div>
+
+            <!-- AZERBAIJANI CONTENT -->
+            <div class="lang-az" style="display:none">
+                <h2>Məcburi Dövlət Sosial Sığorta və Digər Ayırmalar</h2>
+                <p>Gəlir Vergisindən əlavə, əmək haqqı fondundan məcburi sığorta haqları tutulur və hesablanır. 2026-cı ildə sosial sığorta haqlarının dərəcələri və hesablama qaydasında dəyişikliklər qüvvəyə minəcək; lakin ümumi yanaşma eyni qalır: haqlar işçi tərəfindən ödənilən (maaşdan tutulan) və işəgötürən tərəfindən ödənilən (maaşın üzərinə hesablanan) hissələrə bölünür. Haqqların əsas növləri və dərəcələri aşağıdakılardır:</p>
+
+                <h3>Dövlət Pensiya / Sosial Sığorta Haqları (DSMF)</h3>
+                <p>Məcburi dövlət sosial sığorta haqları əmək haqqı fondunun cəmi 25%-ni təşkil edir və Dövlət Sosial Müdafiə Fonduna köçürülür. Bu yükün işçi və işəgötürən arasında bölüşdürülməsi proqressiv xarakter daşıyır, 200 AZN həddini və 2026-cı ildən etibarən 8,000 AZN həddini nəzərə alır:</p>
+                <ul>
+                    <li><strong>Maaşın 200 AZN-dək olan hissəsindən</strong> – işçinin ödənişi 3%, işəgötürənin ödənişi isə bu hissənin 22%-ni təşkil edir. Beləliklə, ilk 200 AZN-dən 25% ödənilir (bu, cəmi 50 AZN edir, bunun 6 AZN-i işçi, 44 AZN-i isə işəgötürən tərəfindən ödənilir). Əgər maaş 200 AZN-dən çox deyilsə, yalnız bu aşağı dərəcə tətbiq olunur.</li>
+                    <li><strong>Maaşın 200 AZN-dən 8,000 AZN-dək olan hissəsindən</strong> – işçinin ödənişi 10%, işəgötürənin ödənişi isə bu aralıqdakı məbləğin 15%-ni təşkil edir. Cəmi bu da 25% edir. Məsələn, əgər maaş 1,000 AZN-dirsə, ilk 200 AZN 3%/22% ilə, qalan 800 AZN isə 10%/15% ilə hesablanır. İşçidən tutulma: 6 AZN (ilk 200-dən) + 80 AZN (800-dən 10%) = 86 AZN; işəgötürənin hesablaması: 44 AZN + 120 AZN = 164 AZN. Bu dərəcələr özəl sektordakı maaşların böyük əksəriyyətinə şamil edilir.</li>
+                    <li><strong>Maaşın 8,000 AZN-dən yuxarı olan hissəsindən</strong> – azaldılmış dərəcə tətbiq olunur: işçinin ödənişi 10% olaraq qalır, işəgötürənin ödənişi isə 8,000 AZN-dən yuxarı məbləğin 11%-nə endirilir. Gəlirin bu yuxarı hissəsindən cəmi 21% (25% əvəzinə) ödənilir. Bu yenilik 2026-cı ildən etibarən yüksək maaşlar üzrə yükü azaltmaq üçün tətbiq edilmişdir. Məsələn, maaşın 8,000 AZN-dən çox olan hissəsindən cəmi sosial sığorta haqları 25% yox, 21% olacaq ki, bu da çox yüksək gəlirlər üçün ümumi sosial vergi dərəcəsini azaldır.</li>
+                </ul>
+
+                <h3>İşsizlikdən Sığorta Haqları</h3>
+                <p>İşsizlikdən Sığorta Fondu əmək haqqı fondunun 1%-i həcmində haqlar hesabına formalaşır və işçi ilə işəgötürən arasında bərabər bölünür. Yəni, 0.5% işçinin maaşından tutulur və 0.5% işəgötürən tərəfindən ödənilir. Bu dərəcə 2026-cı ildə dəyişməz qalır.</p>
+                <div class="highlight-box">Məsələn: 1,000 AZN maaşla işsizlik fonduna ödəniş işçi tərəfindən 5 AZN və işəgötürən tərəfindən 5 AZN olacaqdır.</div>
+
+                <h3>İcbari Tibbi Sığorta Haqları (İTS)</h3>
+                <p>2026-cı ildə özəl sektor üçün icbari tibbi sığorta (İTS) üzrə yeni hədlər müəyyən edilir:</p>
+                <ul>
+                    <li><strong>Maaşın 2,500 AZN-dək olan hissəsindən</strong> – işçi 2%, işəgötürən də 2% ödəyir. Beləliklə, 2,500 AZN-dək gəlir üçün İTS Fonduna cəmi ödəniş 4% təşkil edir (işçi və işəgötürən arasında bərabər bölünür).</li>
+                    <li><strong>Maaşın 2,500 AZN-dən yuxarı olan hissəsindən</strong> – işçi 0.5%, işəgötürən isə bu həddi aşan məbləğdən 0.5% ödəyir. Artıq hissədən cəmi haqlar cəmi 1% təşkil edir ki, bu da yüksək maaşlar üzrə yükü əhəmiyyətli dərəcədə azaldır. (Əvvəllər, 2026-cı ilə qədər, azaldılmış İTS dərəcəsi üçün hədd 8,000 AZN idi; indi isə yeni Gəlir Vergisi şkalası ilə uyğunlaşdırmaq üçün 2,500 AZN-ə endirilmişdir.)</li>
+                </ul>
+                <div class="highlight-box">
+                    İTS hesablamasına nümunə: 3,000 AZN maaş üçün haqq aşağıdakı kimi hesablanır:<br>
+                    • ilk 2,500 AZN-dən – 2% (50 AZN) işçi və 2% (50 AZN) işəgötürən;<br>
+                    • qalan 500 AZN-dən – 0.5% (2.5 AZN) işçi və 0.5% (2.5 AZN) işəgötürən.<br>
+                    Cəmi İTS haqları:<br>
+                    • işçi: 52.5 AZN,<br>
+                    • işəgötürən: 52.5 AZN.<br>
+                    Daha aşağı gəlirlər üçün (≤ 2,500 AZN), bütün məbləğ 2%-ə cəlb olunur; əhəmiyyətli dərəcədə yüksək gəlirlər üçün isə əsas hissə azaldılmış 0.5% dərəcəsi ilə vergiyə cəlb olunur.
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: EXAMPLES -->
+        <div id="examples" class="content-section">
+            
+            <!-- ENGLISH CONTENT -->
+            <div class="lang-en">
+                <h2>Examples of Salary and Tax Withholding Calculations</h2>
+                <p>Below are several examples demonstrating the full calculation of withholdings from an employee’s salary, taking into account the taxes and contributions described above.</p>
+
+                <div class="example-card">
+                    <div class="example-header">Example 1: Ordinary employee without benefits, salary 1,000 AZN</div>
+                    <div class="example-body">
+                        <ul>
+                            <li><strong>PIT:</strong> Income ≤ 2,500 AZN, 200 AZN deduction applies.<br>
+                            Tax = 3% × (1,000 − 200) = 24 AZN PIT.</li>
+                            <li><strong>Social insurance:</strong><br>
+                            200 AZN at 3% = 6 AZN from employee (22% = 44 AZN from employer);<br>
+                            remaining 800 AZN at 10% = 80 AZN from employee (15% = 120 AZN from employer).<br>
+                            Total withheld: 86 AZN; total accrued: 164 AZN social contributions.</li>
+                            <li><strong>Unemployment insurance:</strong><br>
+                            0.5% × 1,000 = 5 AZN withheld (another 5 AZN paid by the employer).</li>
+                            <li><strong>Health insurance:</strong><br>
+                            The entire salary ≤ 2,500 AZN, rate 2%.<br>
+                            20 AZN withheld, 20 AZN paid by the employer.</li>
+                            <li><strong>Net salary:</strong><br>
+                            1,000 − (24 + 86 + 5 + 20) = 865 AZN.</li>
+                            <li><strong>Employer’s costs on top of salary:</strong><br>
+                            164 (social) + 5 (unemployment) + 20 (MHI) = 189 AZN.</li>
+                        </ul>
+                        <div class="highlight-box">
+                            <strong>Explanation:</strong> Total withholdings from the employee’s salary amount to 135 AZN (approximately 13.5% of salary), including all taxes. For the employer, this employee costs 1,189 AZN in total, taking into account 189 AZN of contributions on top of salary.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-header">Example 2: Employee without benefits, salary 3,000 AZN</div>
+                    <div class="example-body">
+                        <ul>
+                            <li><strong>PIT:</strong> Income > 2,500 AZN; the 200 AZN deduction does not apply. Tax is calculated under the second bracket:<br>
+                            75 AZN + 10% × (3,000 − 2,500) = 125 AZN.</li>
+                            <li><strong>Social insurance:</strong><br>
+                            200 AZN at 3% / 22% (6 AZN / 44 AZN);<br>
+                            2,800 AZN at 10% / 15% (280 AZN / 420 AZN).<br>
+                            Total: 286 AZN withheld, 464 AZN accrued as social contributions. (Note that the entire salary is ≤ 8,000 AZN, so the rate for the portion over 8,000 does not apply.)</li>
+                            <li><strong>Unemployment insurance:</strong><br>
+                            0.5% × 3,000 = 15 AZN withheld (and 15 AZN paid by the employer).</li>
+                            <li><strong>Health insurance:</strong><br>
+                            2,500 AZN at 2% = 50 AZN;<br>
+                            remaining 500 AZN at 0.5% = 2.5 AZN.<br>
+                            Total withheld: 52.5 AZN (the same amount is paid by the employer).</li>
+                            <li><strong>Net salary:</strong><br>
+                            3,000 − (125 + 286 + 15 + 52.5) ≈ 2,521.5 AZN (or 2,522 AZN after rounding, if applied).</li>
+                            <li><strong>Additional employer costs:</strong><br>
+                            464 + 15 + 52.5 = 531.5 AZN on top of salary.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-header">Example 3: Employee – disabled person of group II (non-war), salary 800 AZN</div>
+                    <div class="example-body">
+                        <p>Assume the employee has a 100 AZN deduction enabled in their profile under the benefit for disabled persons of group II. Income is also ≤ 2,500 AZN, so the standard 200 AZN deduction applies. The tax calculation is as follows:</p>
+                        <p>From 800 AZN, first 200 AZN (standard deduction) and then 100 AZN (disability benefit) are deducted.<br>
+                        Tax base = 800 − 200 − 100 = 500 AZN.<br>
+                        PIT = 3% × 500 = 15 AZN.</p>
+                        <p>Without the benefit, the tax would be 3% × (800 − 200) = 18 AZN, so the employee saves 3 AZN per month due to the benefit.</p>
+                        <p>Other contributions are calculated on the full salary:<br>
+                        • social insurance on 800 AZN (24 AZN from employee, 120 AZN from employer),<br>
+                        • unemployment insurance 4 AZN,<br>
+                        • health insurance 16 AZN – since these benefits apply only to PIT.</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-header">Example 4: Compensation for vacation from the previous year</div>
+                    <div class="example-body">
+                        <p>In 2026, upon termination of employment, the employee is paid:<br>
+                        • Salary for the month of termination – 2,400 AZN;<br>
+                        • Compensation for unused vacation – 1,200 AZN, of which:<br>
+                        &nbsp;&nbsp;o 800 AZN relate to unused days for 2025;<br>
+                        &nbsp;&nbsp;o 400 AZN relate to unused days for 2026.</p>
+                        <p>Under the adopted rule, when calculating PIT, compensation for unused vacation is calculated separately for each year, and the progressive PIT scale is applied to the amount for each year independently of other employee income.</p>
+                        <p><strong>1. Compensation 800 AZN (for 2025)</strong><br>
+                        For PIT purposes it is treated as a separate monthly income to which the first bracket (up to 2,500 AZN, with 200 AZN exemption) applies:<br>
+                        o Tax base: 800 − 200 = 600 AZN<br>
+                        o PIT: 3% × 600 = 18 AZN</p>
+                        <p><strong>2. Compensation 400 AZN (for 2026)</strong><br>
+                        Similarly, this portion of compensation is treated as a separate income, to which the first bracket also applies:<br>
+                        o Tax base: 400 − 200 = 200 AZN<br>
+                        o PIT: 3% × 200 = 6 AZN</p>
+                        <p><strong>3. Salary 2,400 AZN in the month of termination</strong><br>
+                        The salary for the month of termination is calculated separately from the compensations:<br>
+                        o Income ≤ 2,500 AZN, first bracket applies:<br>
+                        o Tax base: 2,400 − 200 = 2,200 AZN<br>
+                        o PIT: 3% × 2,200 = 66 AZN</p>
+                        <p><strong>4. Total PIT and other contributions</strong><br>
+                        o PIT on compensation for 2025: 18 AZN<br>
+                        o PIT on compensation for 2026: 6 AZN<br>
+                        o PIT on salary: 66 AZN<br>
+                        <strong>Total PIT for the month: 18 + 6 + 66 = 90 AZN</strong></p>
+                        <p>At the same time:<br>
+                        o All other contributions (social insurance, mandatory health insurance, unemployment insurance) are withheld and accrued on the full amount of income paid in the month of termination: 2,400 (salary) + 1,200 (compensation) = 3,600 AZN, at 2026 rates.<br>
+                        o Splitting compensation by year affects only the PIT calculation; the base for other contributions is determined by the total income for the month.</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-header">Example 5: Life insurance</div>
+                    <div class="example-body">
+                        <p>• Salary: 3,000 AZN<br>
+                        • Contribution under a life insurance contract: 900 AZN per month</p>
+                        
+                        <p><strong>Step 1. PIT base</strong><br>
+                        For PIT, the base is Salary minus life insurance contribution:<br>
+                        Base = 3,000 − 900 = 2,100 AZN<br>
+                        Since 2,100 AZN ≤ 2,500 AZN, the first bracket with a 200 AZN deduction applies:<br>
+                        • Tax base for PIT: 2,100 − 200 = 1,900 AZN<br>
+                        • PIT: 3% × 1,900 = 57 AZN</p>
+
+                        <p><strong>Step 2. Base and contributions for social insurance</strong><br>
+                        For social insurance, the base is also reduced by the accumulative life insurance contribution:<br>
+                        Social insurance base = 3,000 − 900 = 2,100 AZN<br>
+                        Then the standard brackets apply:<br>
+                        1. First 200 AZN:<br>
+                        o Employee: 3% × 200 = 6 AZN<br>
+                        o Employer: 22% × 200 = 44 AZN<br>
+                        2. Amount above 200 AZN (2,100 − 200 = 1,900 AZN):<br>
+                        o Employee: 10% × 1,900 = 190 AZN<br>
+                        o Employer: 15% × 1,900 = 285 AZN<br>
+                        Total social insurance:<br>
+                        • Withheld from employee: 6 + 190 = 196 AZN<br>
+                        • Paid by employer: 44 + 285 = 329 AZN</p>
+                        
+                        <p><strong>Step 3. Unemployment insurance contribution</strong><br>
+                        The base for unemployment insurance is not reduced by the insurance contribution: the full salary of 3,000 AZN is taken.<br>
+                        • Employee: 0.5% × 3,000 = 15 AZN<br>
+                        • Employer: 0.5% × 3,000 = 15 AZN</p>
+
+                        <p><strong>Step 4. Mandatory health insurance (MHI)</strong><br>
+                        The MHI base is also not reduced by the life insurance contribution: the calculation is based on 3,000 AZN.<br>
+                        Split into parts:<br>
+                        1. Up to 2,500 AZN:<br>
+                        o Employee: 2% × 2,500 = 50 AZN<br>
+                        o Employer: 2% × 2,500 = 50 AZN<br>
+                        2. On the amount above 2,500 AZN (3,000 − 2,500 = 500 AZN):<br>
+                        o Employee: 0.5% × 500 = 2.5 AZN<br>
+                        o Employer: 0.5% × 500 = 2.5 AZN<br>
+                        Total MHI:<br>
+                        • Employee: 50 + 2.5 = 52.5 AZN<br>
+                        • Employer: 50 + 2.5 = 52.5 AZN</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AZERBAIJANI CONTENT -->
+            <div class="lang-az" style="display:none">
+                <h2>Əmək Haqqı və Vergi Tutulmalarının Hesablanması Nümunələri</h2>
+                <p>Aşağıda yuxarıda təsvir olunan vergi və ayırmaları nəzərə alaraq işçinin maaşından tutulmaların tam hesablanmasını nümayiş etdirən bir neçə nümunə verilmişdir.</p>
+
+                <div class="example-card">
+                    <div class="example-header">Nümunə 1: Güzəşti olmayan adi işçi, maaş 1,000 AZN</div>
+                    <div class="example-body">
+                        <ul>
+                            <li><strong>Gəlir Vergisi:</strong> Gəlir ≤ 2,500 AZN, 200 AZN güzəşt tətbiq edilir.<br>
+                            Vergi = 3% × (1,000 − 200) = 24 AZN GV.</li>
+                            <li><strong>Sosial sığorta:</strong><br>
+                            200 AZN 3% ilə = 6 AZN işçidən (22% = 44 AZN işəgötürəndən);<br>
+                            qalan 800 AZN 10% ilə = 80 AZN işçidən (15% = 120 AZN işəgötürəndən).<br>
+                            Cəmi tutulan: 86 AZN; cəmi hesablanan: 164 AZN sosial ayırmalar.</li>
+                            <li><strong>İşsizlikdən sığorta:</strong><br>
+                            0.5% × 1,000 = 5 AZN tutulur (daha 5 AZN işəgötürən tərəfindən ödənilir).</li>
+                            <li><strong>İcbari tibbi sığorta:</strong><br>
+                            Bütün maaş ≤ 2,500 AZN, dərəcə 2%.<br>
+                            20 AZN tutulur, 20 AZN işəgötürən tərəfindən ödənilir.</li>
+                            <li><strong>Net maaş (Ələ çatan):</strong><br>
+                            1,000 − (24 + 86 + 5 + 20) = 865 AZN.</li>
+                            <li><strong>İşəgötürənin maaş üzərinə xərcləri:</strong><br>
+                            164 (sosial) + 5 (işsizlik) + 20 (İTS) = 189 AZN.</li>
+                        </ul>
+                        <div class="highlight-box">
+                            <strong>İzah:</strong> İşçinin maaşından cəmi tutulmalar 135 AZN təşkil edir (maaşın təxminən 13.5%-i), bütün vergilər daxil olmaqla. İşəgötürən üçün bu işçi maaşın üzərinə gələn 189 AZN ayırmaları nəzərə almaqla cəmi 1,189 AZN-ə başa gəlir.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-header">Nümunə 2: Güzəşti olmayan işçi, maaş 3,000 AZN</div>
+                    <div class="example-body">
+                        <ul>
+                            <li><strong>Gəlir Vergisi:</strong> Gəlir > 2,500 AZN; 200 AZN güzəşt tətbiq edilmir. Vergi ikinci pillə üzrə hesablanır:<br>
+                            75 AZN + 10% × (3,000 − 2,500) = 125 AZN.</li>
+                            <li><strong>Sosial sığorta:</strong><br>
+                            200 AZN 3% / 22% ilə (6 AZN / 44 AZN);<br>
+                            2,800 AZN 10% / 15% ilə (280 AZN / 420 AZN).<br>
+                            Cəmi: 286 AZN tutulur, 464 AZN sosial ayırma kimi hesablanır. (Qeyd edək ki, bütün maaş ≤ 8,000 AZN olduğundan, 8,000-dən yuxarı hissə üçün dərəcə tətbiq edilmir.)</li>
+                            <li><strong>İşsizlikdən sığorta:</strong><br>
+                            0.5% × 3,000 = 15 AZN tutulur (və 15 AZN işəgötürən tərəfindən ödənilir).</li>
+                            <li><strong>İcbari tibbi sığorta:</strong><br>
+                            2,500 AZN 2% ilə = 50 AZN;<br>
+                            qalan 500 AZN 0.5% ilə = 2.5 AZN.<br>
+                            Cəmi tutulan: 52.5 AZN (eyni məbləğ işəgötürən tərəfindən ödənilir).</li>
+                            <li><strong>Net maaş:</strong><br>
+                            3,000 − (125 + 286 + 15 + 52.5) ≈ 2,521.5 AZN (və ya yuvarlaqlaşdırılarsa 2,522 AZN).</li>
+                            <li><strong>İşəgötürənin əlavə xərcləri:</strong><br>
+                            464 + 15 + 52.5 = 531.5 AZN maaşın üzərinə.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-header">Nümunə 3: İşçi – II qrup əlil (müharibə əlili olmayan), maaş 800 AZN</div>
+                    <div class="example-body">
+                        <p>Fərz edək ki, işçinin profilində II qrup əlillər üçün nəzərdə tutulan 100 AZN güzəşt aktivdir. Gəlir həmçinin ≤ 2,500 AZN olduğundan, 200 AZN standart güzəşt də tətbiq edilir. Vergi hesablaması aşağıdakı kimidir:</p>
+                        <p>800 AZN-dən əvvəlcə 200 AZN (standart güzəşt), sonra isə 100 AZN (əlillik güzəşti) çıxılır.<br>
+                        Vergi bazası = 800 − 200 − 100 = 500 AZN.<br>
+                        Gəlir Vergisi = 3% × 500 = 15 AZN.</p>
+                        <p>Güzəşt olmasaydı, vergi 3% × (800 − 200) = 18 AZN olardı, yəni işçi güzəşt sayəsində ayda 3 AZN qənaət edir.</p>
+                        <p>Digər ayırmalar tam maaşdan hesablanır:<br>
+                        • sosial sığorta 800 AZN-dən (24 AZN işçidən, 120 AZN işəgötürəndən),<br>
+                        • işsizlikdən sığorta 4 AZN,<br>
+                        • icbari tibbi sığorta 16 AZN – çünki bu güzəştlər yalnız gəlir vergisinə şamil edilir.</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-header">Nümunə 4: Əvvəlki ildən qalan məzuniyyətə görə kompensasiya</div>
+                    <div class="example-body">
+                        <p>2026-cı ildə əmək müqaviləsinə xitam verilərkən işçiyə ödənilir:<br>
+                        • Xitam verilən ay üçün maaş – 2,400 AZN;<br>
+                        • İstifadə olunmamış məzuniyyətə görə kompensasiya – 1,200 AZN, bunun:<br>
+                        &nbsp;&nbsp;o 800 AZN-i 2025-ci ilin istifadə olunmamış günlərinə aiddir;<br>
+                        &nbsp;&nbsp;o 400 AZN-i 2026-cı ilin istifadə olunmamış günlərinə aiddir.</p>
+                        <p>Qəbul edilmiş qaydaya əsasən, gəlir vergisi hesablanarkən istifadə olunmamış məzuniyyətə görə kompensasiya hər il üçün ayrıca hesablanır və proqressiv vergi şkalası işçinin cari aydakı digər gəlirlərindən asılı olmayaraq hər ilin məbləğinə müstəqil şəkildə tətbiq edilir.</p>
+                        <p><strong>1. Kompensasiya 800 AZN (2025-ci il üçün)</strong><br>
+                        Gəlir vergisi məqsədləri üçün bu, ayrıca aylıq gəlir kimi qəbul edilir və ona birinci pillə (2,500 AZN-dək, 200 AZN azadolma ilə) tətbiq olunur:<br>
+                        o Vergi bazası: 800 − 200 = 600 AZN<br>
+                        o Gəlir Vergisi: 3% × 600 = 18 AZN</p>
+                        <p><strong>2. Kompensasiya 400 AZN (2026-cı il üçün)</strong><br>
+                        Eynilə, kompensasiyanın bu hissəsi də ayrıca gəlir kimi qəbul edilir və ona da birinci pillə tətbiq olunur:<br>
+                        o Vergi bazası: 400 − 200 = 200 AZN<br>
+                        o Gəlir Vergisi: 3% × 200 = 6 AZN</p>
+                        <p><strong>3. Xitam verilən ay üçün maaş 2,400 AZN</strong><br>
+                        Xitam ayının maaşı kompensasiyalardan ayrı hesablanır:<br>
+                        o Gəlir ≤ 2,500 AZN, birinci pillə tətbiq olunur:<br>
+                        o Vergi bazası: 2,400 − 200 = 2,200 AZN<br>
+                        o Gəlir Vergisi: 3% × 2,200 = 66 AZN</p>
+                        <p><strong>4. Cəmi gəlir vergisi və digər ayırmalar</strong><br>
+                        o 2025-ci il kompensasiyası üzrə vergi: 18 AZN<br>
+                        o 2026-cı il kompensasiyası üzrə vergi: 6 AZN<br>
+                        o Maaş üzrə vergi: 66 AZN<br>
+                        <strong>Ay üzrə cəmi gəlir vergisi: 18 + 6 + 66 = 90 AZN</strong></p>
+                        <p>Eyni zamanda:<br>
+                        o Bütün digər ayırmalar (sosial sığorta, icbari tibbi sığorta, işsizlikdən sığorta) xitam ayında ödənilən gəlirin tam məbləğindən tutulur və hesablanır: 2,400 (maaş) + 1,200 (kompensasiya) = 3,600 AZN, 2026-cı il dərəcələri ilə.<br>
+                        o Kompensasiyanın illərə bölünməsi yalnız gəlir vergisinin hesablanmasına təsir edir; digər ayırmalar üçün baza ayın ümumi gəliri ilə müəyyən edilir.</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-header">Nümunə 5: Həyat sığortası</div>
+                    <div class="example-body">
+                        <p>• Maaş: 3,000 AZN<br>
+                        • Həyat sığortası müqaviləsi üzrə ödəniş: ayda 900 AZN</p>
+                        
+                        <p><strong>Addım 1. Gəlir vergisi bazası</strong><br>
+                        Gəlir vergisi üçün baza Maaş çıxılsın həyat sığortası ödənişidir:<br>
+                        Baza = 3,000 − 900 = 2,100 AZN<br>
+                        2,100 AZN ≤ 2,500 AZN olduğu üçün, 200 AZN güzəştlə birinci pillə tətbiq olunur:<br>
+                        • Vergi bazası: 2,100 − 200 = 1,900 AZN<br>
+                        • Gəlir Vergisi: 3% × 1,900 = 57 AZN</p>
+
+                        <p><strong>Addım 2. Sosial sığorta üçün baza və ayırmalar</strong><br>
+                        Sosial sığorta üçün baza da yığım həyat sığortası ödənişi qədər azaldılır:<br>
+                        Sosial sığorta bazası = 3,000 − 900 = 2,100 AZN<br>
+                        Sonra standart pillələr tətbiq olunur:<br>
+                        1. İlk 200 AZN:<br>
+                        o İşçi: 3% × 200 = 6 AZN<br>
+                        o İşəgötürən: 22% × 200 = 44 AZN<br>
+                        2. 200 AZN-dən yuxarı məbləğ (2,100 − 200 = 1,900 AZN):<br>
+                        o İşçi: 10% × 1,900 = 190 AZN<br>
+                        o İşəgötürən: 15% × 1,900 = 285 AZN<br>
+                        Cəmi sosial sığorta:<br>
+                        • İşçidən tutulan: 6 + 190 = 196 AZN<br>
+                        • İşəgötürən tərəfindən ödənilən: 44 + 285 = 329 AZN</p>
+                        
+                        <p><strong>Addım 3. İşsizlikdən sığorta haqqı</strong><br>
+                        İşsizlikdən sığorta üçün baza sığorta ödənişi qədər azaldılmır: tam maaş 3,000 AZN götürülür.<br>
+                        • İşçi: 0.5% × 3,000 = 15 AZN<br>
+                        • İşəgötürən: 0.5% × 3,000 = 15 AZN</p>
+
+                        <p><strong>Addım 4. İcbari tibbi sığorta (İTS)</strong><br>
+                        İTS bazası da həyat sığortası ödənişi qədər azaldılmır: hesablama 3,000 AZN əsasında aparılır.<br>
+                        Hissələrə bölünmə:<br>
+                        1. 2,500 AZN-dək:<br>
+                        o İşçi: 2% × 2,500 = 50 AZN<br>
+                        o İşəgötürən: 2% × 2,500 = 50 AZN<br>
+                        2. 2,500 AZN-dən yuxarı məbləğ (3,000 − 2,500 = 500 AZN):<br>
+                        o İşçi: 0.5% × 500 = 2.5 AZN<br>
+                        o İşəgötürən: 0.5% × 500 = 2.5 AZN<br>
+                        Cəmi İTS:<br>
+                        • İşçi: 50 + 2.5 = 52.5 AZN<br>
+                        • İşəgötürən: 50 + 2.5 = 52.5 AZN</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- TAB LOGIC ---
+        function openTab(tabId) {
+            // Hide all contents
+            const contents = document.querySelectorAll('.content-section');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Deactivate all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Activate chosen content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Activate button
+            const activeBtn = Array.from(buttons).find(b => b.getAttribute('onclick').includes(tabId));
+            if(activeBtn) activeBtn.classList.add('active');
+
+            // Scroll to content on mobile
+            if (window.innerWidth < 768) {
+                document.getElementById(tabId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // --- LANGUAGE LOGIC ---
+        let currentLang = 'en';
+        
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'az' : 'en';
+            const langBtnText = document.getElementById('langText');
+            
+            langBtnText.textContent = currentLang.toUpperCase();
+            
+            // Toggle visibility classes
+            const enElements = document.querySelectorAll('.lang-en');
+            const azElements = document.querySelectorAll('.lang-az');
+            
+            if (currentLang === 'en') {
+                enElements.forEach(el => {
+                    // Check if it's inside a button (needs inline) or div (block)
+                    if (el.tagName === 'SPAN') {
+                        el.style.display = 'inline';
+                    } else {
+                        el.style.display = 'block';
+                    }
+                });
+                azElements.forEach(el => el.style.display = 'none');
+            } else {
+                enElements.forEach(el => el.style.display = 'none');
+                azElements.forEach(el => {
+                    if (el.tagName === 'SPAN') {
+                        el.style.display = 'inline';
+                    } else {
+                        el.style.display = 'block';
+                    }
+                });
+            }
+        }
+
+        // --- DARK MODE LOGIC ---
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+    </script>
+</body>
+</html>
